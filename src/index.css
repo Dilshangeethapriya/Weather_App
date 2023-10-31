@@ -1,0 +1,324 @@
+*{
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body{
+  font-family: "Segoe UI", Arial, sans-serif;;
+  background: url('./assets/clouds.jpg')  center/cover; 
+  background-attachment: fixed;
+}
+
+
+h1 {
+  font-size: 2.5vw;
+  line-height: 1.1;
+}
+
+.page-footer {
+  text-align: center;
+  padding-top: 2vh;
+  width: 100%;
+  text-align: center;
+}
+.footer-container {
+  width: 100%;
+  height: 6vh;
+  left: 0;
+  position:absolute;
+  background-color: #2a3035 ;
+  margin-top: 20vh;
+  border-radius: 5px;
+}
+
+.app {
+  color: rgba(255, 255, 255, 0.87);
+   width: 100%;
+   height: 100vh;
+   position: relative;
+}
+
+.app:before{
+  content:'' ;
+  position: absolute;
+  width: 100%;
+  height: 70hv;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* .container{
+  
+} */
+.app .titleBar{
+  display: inline-block;
+}
+  p {
+  font-size: 2.5vw;
+}
+img{
+  position: relative;
+  width: 4vw;
+}
+
+.weatherCards{
+  align-items: center;
+  margin-bottom: 5vw;
+}
+
+.app .description{
+  position: relative;
+}
+
+.descript{
+  position: relative;
+  padding: 10px;
+  
+}
+
+.app .container{
+  position: relative;
+  width: 94%;
+  height: 30vw ;
+  border-radius: 10px;
+  align-items: center;
+  padding: 2vw;
+  background-color: rgba(73, 37, 119, 0.4);
+}
+
+
+
+
+.app .search{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 5%;
+  height: 10%;
+  text-align: center;
+}
+
+
+
+.app input {
+  flex: 2;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.4);
+  border: 1px rgba(0,0,0,0.1) solid;
+  color: white;
+}
+
+.app button{
+  flex: 1;
+  padding: .7rem 1.5rem;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  color: white;
+  background-color:#4B0082;
+}
+::placeholder{
+  color: white;
+}
+
+.top-table{
+  width: 100%;
+}
+
+.bottom-table{
+
+  width: 95%;
+  padding :3%;
+  padding-top:4%;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+
+button:hover {
+  border-color: #646cff;
+}
+
+.app table{
+  border-color: aliceblue;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  gap: 3vw;
+}
+
+.grid-item {
+  border-radius: 5px;
+  text-align: center;
+  background-image: url('assets/cloud1.png');
+  background-size: contain; /* Adjust as needed */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: left;
+
+}
+
+.grid-container h1{
+  font-size: 6vw;;
+}
+
+.grid-container h2{
+  font-size: 2vw;;
+}
+
+.grid-container h3{
+  font-size: 1.5vw;;
+}
+
+.grid-container p{
+  font-size: 1.1vw;;
+}
+
+
+.two-part-container {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  border-radius: 5px;
+}
+
+.top-part {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  position: absolute;
+  width: 100%;
+  height: 65%;
+}
+
+.city-and-time{
+  text-align: center;
+  padding-top: 10%;
+}
+.current-temp{
+   text-align: center;
+   padding-top: 2%;
+}
+.wether-description{
+  display: flex;
+  text-align: center;
+  padding-bottom: 10%;
+  padding-left: 10%;
+}
+.max-min-temp{
+  text-align: center;
+  padding-bottom: 10%;
+}
+
+
+
+.bottom-part {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2a3035; /* Color for the bottom portion */
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px; 
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
+  z-index: +1;
+}
+
+
+
+.weather-info{
+  background-color: #DC143C;
+  border-radius: 10px;
+  margin-top: 5vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+  gap: 10px;
+}
+
+
+
+/*  this is the Styling for SecondPage*/
+
+.second-page{
+  padding: 10px;
+  color: white;
+}
+
+.full-page-weather {
+  margin: auto;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(6,1fr) ;
+  background-color: #00A1E4;
+  border-radius: 7px;
+  width: 65vw;
+  height: 35vw;
+}
+
+.full-page-weather h2 {
+  font-size: 3vw;
+}
+.full-page-weather p {
+  font-size: 1.6vw;
+}
+.full-page-weather img {
+  width: 7vw;
+} 
+
+.full-page-top {
+   grid-column: span 6;
+}
+
+ .full-page-description {
+  text-align: right;
+   grid-column: span 3; 
+   border-right: 0.1vw solid white;
+   margin-bottom: 3vw;
+   margin-top: 3vw;
+  }
+
+ .full-page-temp { 
+  padding: 1vw;
+  text-align: left;
+  grid-column: span 3; 
+}
+
+.full-page-bottom{
+  display: grid;
+  gap:0;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  grid-template-columns:repeat(3, 1fr);
+  grid-column: span 6;
+  background-color: #2a3035 ;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.full-page-bottom-left { 
+ text-align: right;
+ padding: 1vw;
+ background-color: transparent;
+}
+
+.full-page-bottom-mid {
+  text-align: center;
+  padding: 1vw;
+  border-right: 0.1vw solid white;
+  border-left: 0.1vw solid white ;
+}
+.full-page-bottom-right {
+  text-align: left;
+  padding: 1vw;
+  background-color: transparent;
+}
