@@ -6,6 +6,7 @@
   "homepage": "https://dilshangeethapriya.github.io/Weather_App",
   "scripts": {
     "dev": "vite",
+    "test": "vitest",
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "gh-pages": "^6.0.0",
-    "vite": "^4.1.0"
+    "vite": "^4.1.0",
+    "vitest": "^0.34.6"
   }
 }
