@@ -15,8 +15,8 @@ function CitiesWeather(props) {
     const cachedData = getCache(cityCode);
     const expirationTime = getExpiration(cityCode);
 
-    // If there is no data , fetch it from the API
     if (!cachedData || expirationTime < Date.now()) {
+      // If there is no data or data is expired, fetch it from the API
       console.log("fetching data from API..");
       axios
         .get(
