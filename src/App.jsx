@@ -32,9 +32,9 @@ function App() {
         />
         <p style={{ display: "inline" }}>Weather App</p>
       </div>
-      {/*rendering the search weather componant*/}
+      {/*rendering the CurrentWeather componant*/}
       <WeatherSearch></WeatherSearch>
-      {/*tacking citiCodes from cities.json and passing it to the cicites weather componant to render the  the weather of cities*/}
+      {/*tacking citiCodes from cities.json and passing it to the citiesWeather componant to render the  the weather of cities*/}
       <div className="grid-container">
         {ct.List.map((item, index) => (
           <Link
