@@ -5,14 +5,18 @@ import { dateTimeFormate, timeFormate } from "./DateTimeFormat"; // created a fi
 import direction from "../assets/direction.png";
 
 function WeatherSearch() {
+  // creating state variables to set the data from API and cityName from the input text
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+
+  // setting the url by including city name from the input to fetch data from API
   const url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     location +
     "&appid=ad49549df2c915adda51917a2382f0aa&units=metric";
 
   const searchLocation = () => {
+    //  A method is created to rerive data from API once you Enter the cityName and press Enter Or press Add city Button
     console.log("fetching data from API...");
     axios.get(url).then((response) => {
       setData(response.data);
@@ -21,6 +25,7 @@ function WeatherSearch() {
   };
 
   const handleKeyPress = (event) => {
+    // handling key press
     if (event.key === "Enter") {
       searchLocation();
     }
@@ -30,6 +35,7 @@ function WeatherSearch() {
     <div
       className="weatherCards"
       style={{ paddingBottom: "20px", textAlign: "center" }}>
+      {/*Rendering input field and add button*/}
       <div className="search">
         <input
           type="text"
@@ -43,6 +49,7 @@ function WeatherSearch() {
           Add City
         </button>
       </div>
+      {/*checking if the data is available in the state var and rendering the data*/}
       {data.name ? (
         <div className="full-page-weather">
           <div className="full-page-top">

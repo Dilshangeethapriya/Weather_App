@@ -6,6 +6,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 const router = createBrowserRouter([
+  // routing links to the homepage(app) and second page using react router
   {
     path: "/",
     element: <App></App>,

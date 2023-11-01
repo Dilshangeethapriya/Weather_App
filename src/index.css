@@ -149,6 +149,8 @@ button:hover {
   border-color: aliceblue;
 }
 
+/*  this is the Styling for citiesWeather Componant*/
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
@@ -159,8 +161,8 @@ button:hover {
   border-radius: 5px;
   text-align: center;
   background-image: url('assets/cloud1.png');
-  background-size: contain; /* Adjust as needed */
-  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-size: contain; 
+  background-repeat: no-repeat; 
   background-position: left;
 
 }
@@ -248,7 +250,7 @@ button:hover {
 
 
 
-/*  this is the Styling for SecondPage*/
+/*  this is the Styling for Currentweather(weathersearch) and SecondPage*/
 
 .second-page{
   padding: 10px;

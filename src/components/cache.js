@@ -1,3 +1,4 @@
+// this js file is created to keep  cach of the fetched data from API for 5 minutes
 let cache = {};
 let expirationTime = {};
 

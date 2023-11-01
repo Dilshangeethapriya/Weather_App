@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   const colors = [
+    // creating a color palete for the weather cards for each city
     "#00A1E4",
     "#483D8B",
     "#66CDAA",
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="app">
+      {/*rendering the title bar on the top*/}
       <div className="titleBar">
         <img
           src={Logo}
@@ -30,7 +32,9 @@ function App() {
         />
         <p style={{ display: "inline" }}>Weather App</p>
       </div>
+      {/*rendering the search weather componant*/}
       <WeatherSearch></WeatherSearch>
+      {/*tacking citiCodes from cities.json and passing it to the cicites weather componant to render the  the weather of cities*/}
       <div className="grid-container">
         {ct.List.map((item, index) => (
           <Link
@@ -57,4 +61,3 @@ function App() {
 }
 
 export default App;
-//{ ct.List.map(item => ( <li>{item.CityCode}</li> ))}
