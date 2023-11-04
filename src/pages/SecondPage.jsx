@@ -2,10 +2,12 @@ import TitleBar from "../components/TitleBar.jsx";
 import Footer from "../components/Footer.jsx";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "../styles/currentWeather.css";
 import { useEffect, useState } from "react";
 import { getCache, setCache, getExpiration } from "../data/cache";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat";
 import direction from "../assets/direction.png";
+import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
 
 function WeatherInfo() {
   const { id } = useParams();
@@ -21,11 +23,7 @@ function WeatherInfo() {
     if (!data || expirationTime < Date.now()) {
       console.log("fetching data from API..");
       axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${
-            import.meta.env.VITE_REACT_API_KEY
-          }&units=metric`
-        )
+        .get(getUrlWithId(id))
         .then((response) => {
           // Set API data to state variable
           setData(response.data);
@@ -52,57 +50,44 @@ function WeatherInfo() {
           <TitleBar></TitleBar>
         </div>
         {data ? (
-          <div id="full-page-weather" className="full-page-weather">
+          <div className="full-page-weather">
             <div className="full-page-top">
               {data.main ? (
-                <h2 style={{ fontSize: "4vw" }}>
+                <h2>
                   {" "}
                   {data.name},{data.sys.country}{" "}
                 </h2>
               ) : null}{" "}
-              {data.dt ? (
-                <p style={{ fontSize: "1.3vw" }}>
-                  {" "}
-                  Updated on {dateTimeFormate(data.dt)}
-                </p>
-              ) : null}
+              {data.dt ? <p> Updated on {dateTimeFormate(data.dt)}</p> : null}
             </div>
             <div className="full-page-description">
               {data.weather ? (
                 <img
                   alt="weather"
-                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-                  style={{}}
+                  src={getWeatherImgUrl(data.weather[0].icon)}
                 />
               ) : null}
               {data.weather ? (
-                <p
-                  className="descript"
-                  style={{
-                    fontSize: "2vw",
-                    textShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.5)",
-                  }}>
-                  {data.weather[0].description}
-                </p>
+                <div className="full-page-descript">
+                  <p>{data.weather[0].description}</p>
+                </div>
               ) : null}
             </div>
             <div className="full-page-temp">
+              <div className="full-main-temp">
+                {data.main ? (
+                  <p className="current-temp">{Math.floor(data.main.temp)}°C</p>
+                ) : null}
+              </div>
+
               {data.main ? (
-                <h1 style={{ fontSize: "8vw" }}>
-                  {Math.floor(data.main.temp)}°C
-                </h1>
-              ) : null}
-              {data.main ? (
-                <p style={{ fontSize: "1.8vw" }}>
+                <p className="full-page-text-maxmin-temp">
                   {" "}
                   Temp Min: {Math.floor(data.main.temp_min)}°C
                 </p>
               ) : null}
               {data.main ? (
-                <p style={{ fontSize: "1.8vw" }}>
-                  {" "}
-                  Temp Max: {Math.floor(data.main.temp_max)}°C
-                </p>
+                <p> Temp Max: {Math.floor(data.main.temp_max)}°C</p>
               ) : null}
             </div>
             <div className="full-page-bottom">
@@ -129,10 +114,7 @@ function WeatherInfo() {
                 ) : null}
               </div>
               <div className="full-page-bottom-mid">
-                <img
-                  src={direction}
-                  alt="direction"
-                  style={{ width: "1.5vw" }}></img>
+                <img src={direction} alt="direction"></img>
                 {data.wind ? (
                   <p>
                     {data.wind.speed}m/s {data.wind.deg}° degree

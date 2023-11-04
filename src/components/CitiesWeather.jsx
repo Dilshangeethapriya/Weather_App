@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import "../styles/citiesWeather.css";
 import axios from "axios";
 import direction from "../assets/direction.png";
 import { getCache, setCache, getExpiration } from "../data/cache"; // created a file to save cache data
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
 import LoadingScreen from "./LoadingScreen";
+import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
 
 function CitiesWeather(props) {
   // main function and a prop to recieve the Citicode
@@ -18,11 +20,7 @@ function CitiesWeather(props) {
       // If there is no data or data is expired, fetch it from the API
       console.log("fetching data from API..");
       axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?id=${cityCode}&appid=${
-            import.meta.env.VITE_REACT_API_KEY
-          }&units=metric`
-        )
+        .get(getUrlWithId(cityCode))
         .then((response) => {
           // Set API data to state variable
           setCachedData(response.data);
@@ -67,7 +65,7 @@ function CitiesWeather(props) {
                 <img
                   className="grid-desc-img"
                   alt="weather"
-                  src={`https://openweathermap.org/img/wn/${cachedData.weather[0].icon}@2x.png`}
+                  src={getWeatherImgUrl(cachedData.weather[0].icon)}
                 />
               ) : null}{" "}
               {/*weather description icon from openweatherAPI*/}

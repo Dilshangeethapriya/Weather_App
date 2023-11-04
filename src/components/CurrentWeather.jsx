@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import "../styles/currentWeather.css";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
 import direction from "../assets/direction.png";
+import { getUrlWithName, getWeatherImgUrl } from "../API/apiUrl";
 
 function WeatherSearch() {
   // creating state variables to set the data from API and cityName from the input text
@@ -10,14 +12,11 @@ function WeatherSearch() {
   const [location, setLocation] = useState("");
 
   // setting the url by including city name from the input to fetch data from API
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
-    import.meta.env.VITE_REACT_API_KEY
-  }&units=metric`;
 
   const searchLocation = () => {
     //  A method is created to rerive data from API once you Enter the cityName and press Enter Or press Add city Button
     console.log("fetching data from API...");
-    axios.get(url).then((response) => {
+    axios.get(getUrlWithName(location)).then((response) => {
       setData(response.data);
     });
     setLocation("");
@@ -60,10 +59,7 @@ function WeatherSearch() {
           </div>
           <div className="full-page-description">
             {data.weather ? (
-              <img
-                alt="weather"
-                src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-              />
+              <img alt="weather" src={getWeatherImgUrl(data.weather[0].icon)} />
             ) : null}
             {data.weather ? (
               <div className="full-page-descript">

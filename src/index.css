@@ -17,23 +17,14 @@ h1 {
   line-height: 1.1;
 }
 
-.second-page{
-  max-width: 1280px;
-  max-height: 720px;
+p {
+  font-size: 2.5vw;
 }
 
-.footer-container {
-  padding: 2vw;
-  margin-top: 10vh;
-  place-items: center;
-  width: 100%;
-  left: 0;
-  position:absolute;
-  background-color: #2a3035 ;
-  border-radius: 5px;
-  color: white;
+img{
+  position: relative;
+  width: 4vw;
 }
-
 
 
 .app {
@@ -53,189 +44,29 @@ h1 {
   z-index: -1;
 }
 
-/* .container{
-  
-} */
 
-  p {
-  font-size: 2.5vw;
-}
-img{
-  position: relative;
-  width: 4vw;
+.second-page{
+  max-width: 1280px;
+  max-height: 720px;
 }
 
-.weatherCards{
-  margin-bottom: 5vw;
-  padding-bottom: 20px;
-   text-align: center; 
-}
-
-.app .description{
-  position: relative;
-}
-
-
-
-
-
-.app .search{
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 5%;
-  height: 10%;
-  text-align: center;
-}
-
-.app input {
-  flex: 2;
-  padding: 0.7rem 1.5rem;
-  font-size: 1.5vw;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  background: rgba(0,0,0,1);
-  border: 1px solid rgba(0,0,0,0.1) ;
-  color: white;
-  transition: 0.1s linear;
-}
-
-input:hover{
-  transform:  scaleY(110%);
-}
-
-::placeholder{
-  color: white;
-}
-
-.app button{
-  flex: 1;
-  padding: .7rem 1.5rem;
-  font-size: 1.5vw;
-  border-radius: 7px;
-  color: white;
-  background-color:#4B0082;
-  transition: 0.1s linear;
-}
-
-button:hover {
-  transform: scaleX(105%) scaleY(105%);
-}
-
-
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(40%, 1fr));
-  gap: 3vw;
-}
-
-.grid-item {
-  border-radius: 5px;
-  text-align: center;
-  background-image: url('assets/cloud1.png');
-  background-size: contain; 
-  background-repeat: no-repeat; 
-  background-position: left;
-  transition: 0.1s linear;
-}
-
-/*  this is the Styling for citiesWeather Componant*/
-
-
-
-.two-part-container {
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  position: relative;
+.footer-container {
+  margin-top: 20vw;
+  place-items: center;
   width: 100%;
-  padding-top: 60%;
-  border-radius: 5px;
-}
-
-.top-part {
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  position: absolute;
-  width: 100%;
-  height: 65%;
-}
-
-.city-and-time{
-  text-align: center;
-  padding-top: 10%;
-}
-.current-temp{
-   text-align: center;
-   padding-top: 2%;
-}
-.wether-description{
-  display: flex;
-  text-align: center;
-  padding-bottom: 10%;
-  padding-left: 10%;
-}
-.max-min-temp{
-  text-align: center;
-  padding-bottom: 10%;
-}
-
-.bottom-part {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  position: absolute;
-  bottom: 0;
+  height: 10vw;
   left: 0;
-  width: 100%;
-  background-color: #2a3035; /* Color for the bottom portion */
-  border-bottom-left-radius: 5px; 
-  border-bottom-right-radius: 5px; 
-  padding-top: 1.5vw;
-  padding-bottom: 1.5vw;
-  z-index: +1;
+  position:absolute;
+  border-radius: 5px;
 }
 
-.grid-item:hover{
-  transform: scaleX(103%) scaleY(103%);
+.page-footer{
+  background-color: #2a3035 ;
+  color: white;
+  padding: 1.5vw;
 }
 
-.grid-text-temp{
-  font-size: 5vw;
-}
-
-.grid-text-city{
-  font-size: 2vw;
-}
-
-.grid-text-desc{
-  position: relative;
-  padding: 10px;
-  font-size: 2px;
-  margin-top: 1vw;
-  flex: 2;
-  font-size: 1.3vw;
-  float: left;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-.grid-desc-img{
-  flex: 1; 
-  width: 2.5vw;
-}
-
-.grid-text-p{
-  font-size: 1vw;
-}
-
-.grid-wind-direction-img{
-  width: 2vw;
-}
-
-.grid-wind-direction-img{
-  width: 2vw;
-}
+/* direction icon for all componants*/
 
 .wind-speed{
   
@@ -245,131 +76,7 @@ button:hover {
 }
 
 
-
-
-.top-table{
-  width: 100%;
-}
-
-.bottom-table{
-
-  width: 95%;
-  padding :3%;
-  padding-top:4%;
-}
-
-.bold{
-  font-weight: 700;
-}
-
-
-
-/*  this is the Styling for Currentweather(weathersearch) and SecondPage*/
-
-.second-page{
-  padding: 10px;
-  color: white;
-}
-
-.full-page-weather {
-  max-width: 1280px;
-  margin: auto;
-  display: grid;
-  gap: 0;
-  grid-template-columns: repeat(6,1fr) ;
-  background-color: #00A1E4;
-  border-radius: 7px;
-  width: 65vw;
-  height: 35vw;
-}
-
-
-.full-page-weather p {
-  font-size: 1.6vw;
-}
-.full-page-weather img {
-  width: 7vw;
-} 
-
-
-
-.full-page-top {
-   grid-column: span 6;
-}
-
-.full-page-top h2{
-  font-size: 3vw;
-}
-
-.full-page-top p{
-  font-size: 1.3vw;
-}
-
- .full-page-description {
-  text-align: right;
-   grid-column: span 3; 
-   padding-right: 2vw;
-   border-right: 0.1vw solid white;
-   margin-bottom: 3vw;
-   margin-top: 3vw;
-  }
-
- .full-page-temp { 
-  padding: 1vw;
-  padding-left: 2vw;
-  text-align: left;
-  grid-column: span 3; 
-}
-
-.full-page-temp p{
-  font-size: 1.8vw;
-}
-
-.full-main-temp p{
-  text-align: left;
-  font-size: 6vw;
-}
-
-.full-page-descript p{
-  padding-right: 1vw;
-  font-size: 2.1vw;
-}
-
-.full-page-bottom{
-  display: grid;
-  gap:0;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
-  grid-template-columns:repeat(3, 1fr);
-  grid-column: span 6;
-  background-color: #2a3035 ;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-.full-page-bottom-left { 
- text-align: right;
- padding: 1vw;
- background-color: transparent;
-}
-
-.full-page-bottom-mid {
-  text-align: center;
-  padding: 1vw;
-  border-right: 0.1vw solid white;
-  border-left: 0.1vw solid white ;
-}
-
-.full-page-bottom-mid img{
-   width: 2vw;
-}
-
-.full-page-bottom-right {
-  text-align: left;
-  padding: 1vw;
-  background-color: transparent;
-}
-
-
+/* This is the styling for Link elements in the components  */
 
 
 .container-links {
@@ -388,7 +95,9 @@ button:hover {
   height: 10vw;
 }
 
-/* styling for title bar*/
+
+/*This is the Styiling for  title bar*/
+
 .title-img{
   display: inline;
   margin-right: 2vw;
@@ -407,7 +116,12 @@ button:hover {
 
 .titleBar:hover{
   transform: scaleX(101%) scaleY(101%);
+  
 }
+
+
+
+/* This is the styling for Loading Animation */
 
 .loading-circle{
   width: 10vw;
@@ -437,40 +151,14 @@ button:hover {
 }
 
 
+
+
+/* Styling below is creted for smaller screen devices */
+
 @media (max-width:720px){
-  .app .search{
-    display: grid;
-    place-items: center;
-    position: relative;
-    margin: 10%;
-    height: 10%;
-    text-align: center;
-  }
 
-  .app input {
-    width: 60%;
-    font-size: 1.5vw;
-    margin: 2vw;
-    border-radius: 20px;
-    background: rgba(0,0,0,0.4);
-    border: 1px rgba(0,0,0,0.1) solid;
-    color: white;
-  }
-
-  input:hover {
-    transform: scaleX(105%) scaleY(105%);
-  }
-
-  
-  .app button{
-    width: 60%;
-    font-size: 1.5vw;
-    margin: 2vw;
-    border-radius: 20px;
-    color: white;
-    background-color:#4B0082;
-  }
-
+ 
+  /* Title Bar*/
  
 
   .title-img{
@@ -489,164 +177,7 @@ button:hover {
   .titleBar:hover{
     transform: scaleX(101%) scaleY(101%);
   }
-
-
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(80%, 1fr));
-    gap: 3vw;
-  }
-
-  /*  this is the Styling for citiesWeather Componant*/
-
-
-
-.two-part-container {
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  position: relative;
-  width: 100%;
-  padding-top: 60%;
-  border-radius: 5px;
-}
-
-.top-part {
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  position: absolute;
-  width: 100%;
-  height: 65%;
-}
-
-.city-and-time{
-  text-align: center;
-  padding-top: 10%;
-}
-.current-temp{
-   text-align: center;
-   padding-top: 2%;
-}
-.wether-description{
-  display: flex;
-  text-align: center;
-  padding-bottom: 10%;
-  padding-left: 10%;
-}
-.max-min-temp{
-  text-align: center;
-  padding-bottom: 10%;
-}
-
-
-
-.bottom-part {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2a3035; /* Color for the bottom portion */
-  border-bottom-left-radius: 5px; 
-  border-bottom-right-radius: 5px; 
-  padding-top: 1.5vw;
-  padding-bottom: 1.5vw;
-  z-index: +1;
-}
-
-  .grid-text-temp{
-    font-size: 7vw;
-  }
-  
-  .grid-text-city{
-    font-size: 3.5vw;
-  }
-
-  .grid-text-desc{
-    position: relative;
-    padding: 10px;
-    font-size: 2px;
-    margin-top: 1vw;
-    flex: 2;
-    font-size: 2.1vw;
-    float: left;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  }
-
-  .grid-desc-img{
-    flex: 1; 
-    width: 2vw;
-  }
-
-  .grid-text-p{
-    font-size: 1.8vw;
-  }
-
-
-  .full-page-weather {
-    margin: auto;
-    display: grid;
-    gap: 0;
-    grid-template-columns: repeat(6,1fr) ;
-    background-color: #00A1E4;
-    border-radius: 7px;
-    width: 100%;
-    height: 30vw;
-    margin-bottom: 4vw;
-  }
-  
-  .full-page-top {
-     grid-column: span 6;
-  }
-  
-   .full-page-description {
-    text-align: right;
-     grid-column: span 3; 
-     border-right: 0.1vw solid white;
-     margin-bottom: 3vw;
-     margin-top: 3vw;
-    }
-  
-   .full-page-temp { 
-    padding: 1vw;
-    text-align: left;
-    grid-column: span 3; 
-  }
-  
-  .full-page-bottom{
-    display: grid;
-    gap:0;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
-    grid-template-columns:repeat(3, 1fr);
-    grid-column: span 6;
-    background-color: #2a3035 ;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-  }
-  .full-page-bottom-left { 
-   text-align: right;
-   padding: 1vw;
-   background-color: transparent;
-  }
-  
-  .full-page-bottom-mid {
-    text-align: center;
-    padding: 1vw;
-    border-right: 0.1vw solid white;
-    border-left: 0.1vw solid white ;
-  }
-  .full-page-bottom-right {
-    text-align: left;
-    padding: 1vw;
-    background-color: transparent;
-  }
-
-  .full-page-text-temp{
-    font-size: 7vw;
-  }
-  
+ 
 
 }
 

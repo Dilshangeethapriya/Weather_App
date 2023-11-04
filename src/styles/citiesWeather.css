@@ -1,0 +1,211 @@
+/*  this is the Styling for citiesWeather Componant*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(40%, 1fr));
+    gap: 3vw;
+  }
+  
+  .grid-item {
+    border-radius: 5px;
+    text-align: center;
+    background-image: url('../assets/cloud1.png');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: left;
+    transition: 0.1s linear;
+  }
+  
+  
+  .two-part-container {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    position: relative;
+    width: 100%;
+    padding-top: 60%;
+    border-radius: 5px;
+  }
+  
+  .top-part {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    position: absolute;
+    width: 100%;
+    height: 65%;
+  }
+  
+  .city-and-time{
+    text-align: center;
+    padding-top: 10%;
+  }
+  .current-temp{
+     text-align: center;
+     padding-top: 2%;
+  }
+  .wether-description{
+    display: flex;
+    text-align: center;
+    padding-bottom: 10%;
+    padding-left: 10%;
+  }
+  .max-min-temp{
+    text-align: center;
+    padding-bottom: 10%;
+  }
+  
+  .bottom-part {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2a3035; 
+    border-bottom-left-radius: 5px; 
+    border-bottom-right-radius: 5px; 
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    z-index: +1;
+  }
+  
+  .grid-item:hover{
+    transform: scaleX(103%) scaleY(103%);
+  }
+  
+  .grid-text-temp{
+    font-size: 5vw;
+  }
+  
+  .grid-text-city{
+    font-size: 2vw;
+  }
+  
+  .grid-text-desc{
+    position: relative;
+    padding: 10px;
+    font-size: 2px;
+    margin-top: 1vw;
+    flex: 2;
+    font-size: 1.3vw;
+    float: left;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  
+  .grid-desc-img{
+    flex: 1; 
+    width: 2.5vw;
+  }
+  
+  .grid-text-p{
+    font-size: 1vw;
+  }
+  
+  .grid-wind-direction-img{
+    width: 2vw;
+  }
+  
+  .grid-wind-direction-img{
+    width: 2vw;
+  }
+
+
+
+/* Styling below is creted for smaller screen devices */
+
+@media (max-width:720px){
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(80%, 1fr));
+        gap: 3vw;
+      }
+    
+    
+    
+      /*  this is the Styling for citiesWeather Componant*/
+    
+    
+    
+    .two-part-container {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      position: relative;
+      width: 100%;
+      padding-top: 60%;
+      border-radius: 5px;
+    }
+    
+    .top-part {
+      display: grid;
+      grid-template-columns: 1fr 1fr ;
+      position: absolute;
+      width: 100%;
+      height: 65%;
+    }
+    
+    .city-and-time{
+      text-align: center;
+      padding-top: 10%;
+    }
+    .current-temp{
+       text-align: center;
+       padding-top: 2%;
+    }
+    .wether-description{
+      display: flex;
+      text-align: center;
+      padding-bottom: 10%;
+      padding-left: 10%;
+    }
+    .max-min-temp{
+      text-align: center;
+      padding-bottom: 10%;
+    }
+    
+    
+    
+    .bottom-part {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2a3035; /* Color for the bottom portion */
+      border-bottom-left-radius: 5px; 
+      border-bottom-right-radius: 5px; 
+      padding-top: 1.5vw;
+      padding-bottom: 1.5vw;
+      z-index: +1;
+    }
+    
+      .grid-text-temp{
+        font-size: 7vw;
+      }
+      
+      .grid-text-city{
+        font-size: 3.5vw;
+      }
+    
+      .grid-text-desc{
+        position: relative;
+        padding: 10px;
+        font-size: 2px;
+        margin-top: 1vw;
+        flex: 2;
+        font-size: 2.1vw;
+        float: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      }
+    
+      .grid-desc-img{
+        flex: 1; 
+        width: 2vw;
+      }
+    
+      .grid-text-p{
+        font-size: 1.8vw;
+      }
+    
+
+}

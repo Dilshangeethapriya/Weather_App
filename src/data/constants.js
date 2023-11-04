@@ -13,11 +13,4 @@ const colors = [
   "#191970",
 ];
 
-const linkstyle = `.link{
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  `;
-
-export { linkstyle, colors };
+export { colors };

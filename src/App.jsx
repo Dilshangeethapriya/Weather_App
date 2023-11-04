@@ -7,8 +7,6 @@ import TitleBar from "./components/TitleBar.jsx";
 import Footer from "./components/Footer.jsx";
 
 function App() {
-  const [cardcolor, setcolor] = useState();
-
   return (
     <div className="app">
       {/*rendering the title bar on the top*/}
