@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import direction from "../assets/direction.png";
-import { getCache, setCache, getExpiration } from "./cache"; // created a file to save cache data
-import { dateTimeFormate, timeFormate } from "./DateTimeFormat"; // created a file to format the date and time
+import { getCache, setCache, getExpiration } from "../data/cache"; // created a file to save cache data
+import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
+import LoadingScreen from "./LoadingScreen";
 
 function CitiesWeather(props) {
   // main function and a prop to recieve the Citicode
   const { cityCode } = props;
-
   const [cachedData, setCachedData] = useState(); // creating a usestate variable to set cached data
 
   useEffect(() => {
     // Check whether the data is cached or not
     const cachedData = getCache(cityCode);
     const expirationTime = getExpiration(cityCode);
-
     if (!cachedData || expirationTime < Date.now()) {
       // If there is no data or data is expired, fetch it from the API
       console.log("fetching data from API..");
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?id=${cityCode}&appid=ad49549df2c915adda51917a2382f0aa&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?id=${cityCode}&appid=${
+            import.meta.env.VITE_REACT_API_KEY
+          }&units=metric`
         )
         .then((response) => {
           // Set API data to state variable
@@ -47,16 +48,16 @@ function CitiesWeather(props) {
             {/*top table for city,country,date, temp and weather description*/}
             <div className="city-and-time">
               {cachedData.main ? (
-                <h2 style={{ fontSize: "2.3vw" }}>
+                <h2 className="grid-text-city">
                   {" "}
                   {cachedData.name},{cachedData.sys.country}{" "}
                 </h2>
               ) : null}{" "}
-              <p>{dateTimeFormate(cachedData.dt)}</p>{" "}
+              <p className="grid-text-p">{dateTimeFormate(cachedData.dt)}</p>{" "}
             </div>
             <div className="current-temp">
               {cachedData.main ? (
-                <p style={{ fontSize: "5vw" }}>
+                <p className="grid-text-temp">
                   {Math.floor(cachedData.main.temp)}°C
                 </p>
               ) : null}
@@ -64,35 +65,27 @@ function CitiesWeather(props) {
             <div className="wether-description">
               {cachedData.weather ? (
                 <img
+                  className="grid-desc-img"
                   alt="weather"
                   src={`https://openweathermap.org/img/wn/${cachedData.weather[0].icon}@2x.png`}
-                  style={{ flex: "1", width: "2vw" }}
                 />
               ) : null}{" "}
               {/*weather description icon from openweatherAPI*/}
               {cachedData.weather ? (
-                <p
-                  className="descript"
-                  style={{
-                    marginTop: "1vw",
-                    flex: "2",
-                    fontSize: "1.3vw",
-                    float: "left",
-                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
-                  }}>
+                <p className="grid-text-desc">
                   {cachedData.weather[0].description}
                 </p>
               ) : null}
             </div>
             <div className="max-min-temp">
               {cachedData.main ? (
-                <p style={{ fontSize: "1.2vw" }}>
+                <p className="grid-text-p">
                   {" "}
                   Temp Min: {Math.floor(cachedData.main.temp_min)}°C
                 </p>
               ) : null}
               {cachedData.main ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   {" "}
                   Temp Max: {Math.floor(cachedData.main.temp_max)}°C
                 </p>
@@ -104,51 +97,46 @@ function CitiesWeather(props) {
 
             <div className="pressure-hum-visibility">
               {cachedData.main ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   {" "}
                   <strong>Pressure:</strong> {cachedData.main.pressure} hPa{" "}
                 </p>
               ) : null}
               {cachedData.main ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   {" "}
                   <strong>Humidity: </strong>
                   {cachedData.main.humidity} %{" "}
                 </p>
               ) : null}
               {cachedData.visibility ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   {" "}
                   <strong>Visibility:</strong>{" "}
                   {(cachedData.visibility / 1000).toFixed(1)} km{" "}
                 </p>
               ) : null}
             </div>
-            <div
-              className="wind-speed"
-              style={{
-                borderLeft: "0.1vw solid white",
-                borderRight: "0.1vw solid white",
-              }}>
+            <div className="wind-speed">
               <img
+                className="grid-wind-direction-img"
                 src={direction}
-                alt="direction"
-                style={{ width: "1.5vw" }}></img>
+                alt="direction"></img>
               {cachedData.wind ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   {cachedData.wind.speed}m/s {cachedData.wind.deg}° degree
                 </p>
               ) : null}
             </div>
             <div className="sunrise-sunset">
               {cachedData.sys ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   <strong>Sunrise:</strong>
                   {timeFormate(cachedData.sys.sunrise)}
                 </p>
               ) : null}
               {cachedData.sys ? (
-                <p style={{ fontSize: "1vw" }}>
+                <p className="grid-text-p">
                   <strong>Sunset:</strong>
                   {timeFormate(cachedData.sys.sunset)}
                 </p>
@@ -156,7 +144,9 @@ function CitiesWeather(props) {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <LoadingScreen></LoadingScreen>
+      )}
     </div>
   );
 }

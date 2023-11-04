@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { dateTimeFormate, timeFormate } from "./DateTimeFormat"; // created a file to format the date and time
+import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
 import direction from "../assets/direction.png";
 
 function WeatherSearch() {
@@ -10,10 +10,9 @@ function WeatherSearch() {
   const [location, setLocation] = useState("");
 
   // setting the url by including city name from the input to fetch data from API
-  const url =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-    location +
-    "&appid=ad49549df2c915adda51917a2382f0aa&units=metric";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
+    import.meta.env.VITE_REACT_API_KEY
+  }&units=metric`;
 
   const searchLocation = () => {
     //  A method is created to rerive data from API once you Enter the cityName and press Enter Or press Add city Button
@@ -32,9 +31,7 @@ function WeatherSearch() {
   };
 
   return (
-    <div
-      className="weatherCards"
-      style={{ paddingBottom: "20px", textAlign: "center" }}>
+    <div className="weatherCards">
       {/*Rendering input field and add button*/}
       <div className="search">
         <input
@@ -54,52 +51,41 @@ function WeatherSearch() {
         <div className="full-page-weather">
           <div className="full-page-top">
             {data.main ? (
-              <h2 style={{ fontSize: "4vw" }}>
+              <h2>
                 {" "}
                 {data.name},{data.sys.country}{" "}
               </h2>
             ) : null}{" "}
-            {data.dt ? (
-              <p style={{ fontSize: "1.3vw" }}>
-                {" "}
-                Updated on {dateTimeFormate(data.dt)}
-              </p>
-            ) : null}
+            {data.dt ? <p> Updated on {dateTimeFormate(data.dt)}</p> : null}
           </div>
           <div className="full-page-description">
             {data.weather ? (
               <img
                 alt="weather"
                 src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-                style={{}}
               />
             ) : null}
             {data.weather ? (
-              <p
-                className="descript"
-                style={{
-                  fontSize: "2vw",
-                  textShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.5)",
-                }}>
-                {data.weather[0].description}
-              </p>
+              <div className="full-page-descript">
+                <p>{data.weather[0].description}</p>
+              </div>
             ) : null}
           </div>
           <div className="full-page-temp">
+            <div className="full-main-temp">
+              {data.main ? (
+                <p className="current-temp">{Math.floor(data.main.temp)}°C</p>
+              ) : null}
+            </div>
+
             {data.main ? (
-              <p style={{ fontSize: "8vw" }}>{Math.floor(data.main.temp)}°C</p>
-            ) : null}
-            {data.main ? (
-              <p style={{ fontSize: "1.8vw" }}>
+              <p className="full-page-text-maxmin-temp">
                 {" "}
                 Temp Min: {Math.floor(data.main.temp_min)}°C
               </p>
             ) : null}
             {data.main ? (
-              <p style={{ fontSize: "1.8vw" }}>
-                {" "}
-                Temp Max: {Math.floor(data.main.temp_max)}°C
-              </p>
+              <p> Temp Max: {Math.floor(data.main.temp_max)}°C</p>
             ) : null}
           </div>
           <div className="full-page-bottom">
@@ -126,10 +112,7 @@ function WeatherSearch() {
               ) : null}
             </div>
             <div className="full-page-bottom-mid">
-              <img
-                src={direction}
-                alt="direction"
-                style={{ width: "1.5vw" }}></img>
+              <img src={direction} alt="direction"></img>
               {data.wind ? (
                 <p>
                   {data.wind.speed}m/s {data.wind.deg}° degree
