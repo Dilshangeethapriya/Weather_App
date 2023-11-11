@@ -1,6 +1,4 @@
 import "./App.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import CityGrid from "./components/CitiGrid.jsx";
 import WeatherSearch from "./components/CurrentWeather.jsx";
 import TitleBar from "./components/TitleBar.jsx";

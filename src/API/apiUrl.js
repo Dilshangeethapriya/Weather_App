@@ -1,17 +1,23 @@
+import {
+  API_WEATHER_UNITS,
+  WEATHER_API_BASE_URL,
+  WEATHER_ICON_BASE_URL,
+} from "../data/constants";
+
 function getUrlWithId(cityCode) {
-  return `https://api.openweathermap.org/data/2.5/weather?id=${cityCode}&appid=${
+  return `${WEATHER_API_BASE_URL}?id=${cityCode}&appid=${
     import.meta.env.VITE_REACT_API_KEY
-  }&units=metric`;
+  }&${API_WEATHER_UNITS}`;
 }
 
 function getUrlWithName(cityName) {
-  return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${
+  return `${WEATHER_API_BASE_URL}?q=${cityName}&appid=${
     import.meta.env.VITE_REACT_API_KEY
-  }&units=metric`;
+  }&${API_WEATHER_UNITS}`;
 }
 
 function getWeatherImgUrl(iconID) {
-  return `https://openweathermap.org/img/wn/${iconID}@2x.png`;
+  return `${WEATHER_ICON_BASE_URL}${iconID}@2x.png`;
 }
 
 export { getUrlWithId, getUrlWithName, getWeatherImgUrl };

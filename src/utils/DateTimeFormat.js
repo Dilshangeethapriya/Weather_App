@@ -1,21 +1,10 @@
+import { MONTH_STRING_SHORT } from "../data/constants";
+
 // Writing a function to formate the date from timestamp recived from API
 function dateTimeFormate(timeStmp) {
   const dateTimeInMilliSeconds = timeStmp * 1000; // seconds to milliseconds (date methodes only work with miliseconds)
   const date = new Date(dateTimeInMilliSeconds);
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+
   const clock12hour = date.getHours() >= 12 ? "pm" : "am"; //  choosing am or pm with ternery oparator
   const formattedHours = date.getHours() % 12 || 12; //  formating hours to 12 hours formate
   const formattedDate =
@@ -24,7 +13,7 @@ function dateTimeFormate(timeStmp) {
     date.getMinutes() +
     clock12hour +
     ",  " +
-    months[date.getMonth()] +
+    MONTH_STRING_SHORT[date.getMonth()] +
     " " +
     date.getDate(); // concat all elements
   return formattedDate;

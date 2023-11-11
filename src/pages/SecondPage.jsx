@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/currentWeather.css";
 import { useEffect, useState } from "react";
-import { getCache, setCache, getExpiration } from "../data/cache";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat";
 import direction from "../assets/direction.png";
 import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
+import { setCache, getCache } from "../data/cacheData";
+import "../styles/SecondPAge.css";
 
 function WeatherInfo() {
   const { id } = useParams();
@@ -17,11 +18,14 @@ function WeatherInfo() {
   useEffect(() => {
     // Check whether the data is cached or not
     const data = getCache(id);
-    const expirationTime = getExpiration(id);
 
-    // If there is no data , fetch it from the API
-    if (!data || expirationTime < Date.now()) {
-      console.log("fetching data from API..");
+    // Check whether the data is cached or not
+    if (data) {
+      // Use the cached data and svae it to state variable
+      setData(data);
+    } else {
+      // If there is no data or data is expired, fetch it from the API
+
       axios
         .get(getUrlWithId(id))
         .then((response) => {
@@ -34,10 +38,6 @@ function WeatherInfo() {
         .catch((error) => {
           console.log(error);
         });
-    } else {
-      // Use the cached data and svae it to state variable
-      console.log("fetching data from cache..");
-      setData(data);
     }
   }, [id]);
 
@@ -49,6 +49,7 @@ function WeatherInfo() {
         <div className="cont-hght-10vw">
           <TitleBar></TitleBar>
         </div>
+        <div className="Spacer"></div>
         {data ? (
           <div className="full-page-weather">
             <div className="full-page-top">

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import "../styles/citiesWeather.css";
 import axios from "axios";
 import direction from "../assets/direction.png";
-import { getCache, setCache, getExpiration } from "../data/cache"; // created a file to save cache data
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
 import LoadingScreen from "./LoadingScreen";
 import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
+import { setCache, getCache } from "../data/cacheData";
 
 function CitiesWeather(props) {
   // main function and a prop to recieve the Citicode
@@ -13,28 +13,26 @@ function CitiesWeather(props) {
   const [cachedData, setCachedData] = useState(); // creating a usestate variable to set cached data
 
   useEffect(() => {
-    // Check whether the data is cached or not
+    // Getting data from cache if valid cache is present local storage
     const cachedData = getCache(cityCode);
-    const expirationTime = getExpiration(cityCode);
-    if (!cachedData || expirationTime < Date.now()) {
+
+    // Check whether the data is cached or not
+    if (cachedData) {
+      // Use the cached data and save it to state variable
+      setCachedData(cachedData);
+    } else {
       // If there is no data or data is expired, fetch it from the API
-      console.log("fetching data from API..");
       axios
         .get(getUrlWithId(cityCode))
         .then((response) => {
           // Set API data to state variable
           setCachedData(response.data);
-
-          // Storing or Updating(if the cache with the corresponded key is expired) the cached data and the expiration time in the cache
+          // Storing or Updating(if the cache with the corresponded key is expired) the cached data in local storage
           setCache(cityCode, response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    } else {
-      // Use the cached data and svae it to state variable
-      console.log("fetching data from cache..");
-      setCachedData(cachedData);
     }
   }, [cityCode]);
 

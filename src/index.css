@@ -7,8 +7,10 @@
 
 body{
   font-family: "Segoe UI", Arial, sans-serif;;
-  background: url('./assets/clouds.jpg')  center/cover; 
-  background-attachment: fixed;
+  background: url('./assets/clouds.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment:fixed;
 }
 
 
@@ -28,10 +30,11 @@ img{
 
 
 .app {
-  color: rgba(255, 255, 255, 0.87);
-   width: 100%;
-   height: 100vh;
    position: relative;
+   color: rgba(255, 255, 255, 0.87);
+   width: 100%;
+   height: 0;
+   z-index: -10;
 }
 
 .app:before{
@@ -42,6 +45,11 @@ img{
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.Spacer{
+  width: 100%;
+  height: 20px;
 }
 
 
@@ -56,8 +64,8 @@ img{
   width: 100%;
   height: 10vw;
   left: 0;
-  position:absolute;
   border-radius: 5px;
+  position: absolute;
 }
 
 .page-footer{
@@ -109,7 +117,7 @@ img{
   display: inline;
 }
 
-.app .titleBar{
+.titleBar{
   display: inline-block;
   transition: 0.1s linear;
 }
@@ -162,16 +170,17 @@ img{
  
 
   .title-img{
-    margin-right: 2vw;
+    margin-right: 2rem;
     min-width: 30px;
   }
   
   .title-name{
-    font-size: x-large;
+    font-size: 2rem;
   }
   
   .app .titleBar{
     display: block;
+    margin-bottom: 20px;
   }
   
   .titleBar:hover{
@@ -180,5 +189,76 @@ img{
  
 
 }
+
+@media (max-width:620px){
+
+  .title-img{
+    margin-right: 1.8rem;
+ 
+  }
+  
+  .title-name{
+    font-size: 1.8rem;
+  }
+
+}
+
+
+@media (max-width:560px){
+
+  .title-img{
+    margin-right: 1.7rem;
+    
+  }
+  
+  .title-name{
+    font-size: 1.7rem;
+  }
+
+}
+
+@media (max-width:480px){
+
+  .title-img{
+    margin-right: 1.6rem;
+   
+  }
+  
+  .title-name{
+    font-size: 1.6rem;
+  }
+ 
+
+}
+
+@media (max-width:400px){
+
+  .title-img{
+    margin-right: 1.5rem;
+   
+  }
+  
+  .title-name{
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+@media (max-width:360px){
+
+  .title-img{
+    margin-right: 1.4rem;
+   
+  }
+  
+  .title-name{
+    font-size: 1.4rem;
+  }
+  
+}
+
+
 
 

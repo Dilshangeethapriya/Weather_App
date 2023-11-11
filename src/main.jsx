@@ -4,15 +4,16 @@ import App from "./App";
 import WeatherInfo from "./pages/SecondPage";
 import "./index.css";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { HOME_ROUTE, SECOND_PAGE } from "./data/constants";
 
 const router = createBrowserRouter([
   // routing links to the homepage(app) and second page using react router
   {
-    path: "/",
+    path: HOME_ROUTE,
     element: <App></App>,
   },
   {
-    path: "pages/:id",
+    path: SECOND_PAGE,
     element: <WeatherInfo></WeatherInfo>,
   },
 ]);

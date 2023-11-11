@@ -1,7 +1,9 @@
+import { FOOTER_INFORMATION } from "../data/constants";
+
 function Footer() {
   return (
     <div className="footer-container">
-      <div className="page-footer">2023 Dilshan Geethapriya</div>
+      <div className="page-footer">{FOOTER_INFORMATION}</div>
     </div>
   );
 }
