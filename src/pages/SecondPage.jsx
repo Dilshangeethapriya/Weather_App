@@ -8,7 +8,6 @@ import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat";
 import direction from "../assets/direction.png";
 import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
 import { setCache, getCache } from "../data/cacheData";
-import "../styles/SecondPAge.css";
 
 function WeatherInfo() {
   const { id } = useParams();
