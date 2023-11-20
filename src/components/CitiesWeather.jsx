@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/citiesWeather.css";
 import axios from "axios";
 import direction from "../assets/direction.png";
-import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
+import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // method to format the date and time
 import LoadingScreen from "./LoadingScreen";
 import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
 import { setCache, getCache } from "../data/cacheData";
