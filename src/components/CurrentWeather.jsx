@@ -24,12 +24,17 @@ function WeatherSearch() {
       console.log();
     } else {
       //  A method is created to rerive data from API once you Enter the cityName and press Enter Or press Add city Button
-      axios.get(getUrlWithName(location)).then((response) => {
-        setData(response.data);
-        console.log();
-        // storing data in a cache in Local storage
-        setCache(location, response.data);
-      });
+      axios
+        .get(getUrlWithName(location))
+        .then((response) => {
+          setData(response.data);
+          console.log();
+          // storing data in a cache in Local storage
+          setCache(location, response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     setLocation("");
   };
