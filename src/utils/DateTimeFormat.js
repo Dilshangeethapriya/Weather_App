@@ -1,6 +1,7 @@
 import { MONTH_STRING_SHORT } from "../data/constants";
 
 // Writing a function to formate the date from timestamp recived from API
+
 function dateTimeFormate(timeStmp) {
   const dateTimeInMilliSeconds = timeStmp * 1000; // seconds to milliseconds
   const date = new Date(dateTimeInMilliSeconds);
@@ -19,6 +20,7 @@ function dateTimeFormate(timeStmp) {
 }
 
 // Writing a function to format the date from timestamp recived from API
+
 function timeFormate(timeStmp) {
   const dateTimeInMilliSeconds = timeStmp * 1000;
   const date = new Date(dateTimeInMilliSeconds);
