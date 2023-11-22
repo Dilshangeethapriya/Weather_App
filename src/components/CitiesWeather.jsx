@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import "../styles/citiesWeather.css";
-import axios from "axios";
 import direction from "../assets/direction.png";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // method to format the date and time
 import LoadingScreen from "./LoadingScreen";
-import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
+import { getWeatherImgUrl, getWeatherWithCityCode } from "../API/ApiHelper";
 import { setCache, getCache } from "../data/cacheData";
 
 function CitiesWeather(props) {
@@ -13,27 +12,23 @@ function CitiesWeather(props) {
   const [cachedData, setCachedData] = useState(); // creating a usestate variable to set cached data
 
   useEffect(() => {
-    // Getting data from cache if valid cache is present local storage
-    const cachedData = getCache(cityCode);
+    const fetchData = async () => {
+      try {
+        const cachedData = getCache(cityCode);
 
-    // Check whether the data is cached or not
-    if (cachedData) {
-      // Use the cached data and save it to state variable
-      setCachedData(cachedData);
-    } else {
-      // If there is no data or data is expired, fetch it from the API
-      axios
-        .get(getUrlWithId(cityCode))
-        .then((response) => {
-          // Set API data to state variable
-          setCachedData(response.data);
-          // Storing or Updating(if the cache with the corresponded key is expired) the cached data in local storage
-          setCache(cityCode, response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+        if (cachedData) {
+          setCachedData(cachedData);
+        } else {
+          const APIdata = await getWeatherWithCityCode(cityCode);
+          setCachedData(APIdata);
+          setCache(cityCode, APIdata);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, [cityCode]);
 
   return (

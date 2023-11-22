@@ -1,13 +1,16 @@
 import TitleBar from "../components/TitleBar.jsx";
 import Footer from "../components/Footer.jsx";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "../styles/currentWeather.css";
+import "../styles/secondPage.css";
 import { useEffect, useState } from "react";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat";
 import direction from "../assets/direction.png";
-import { getUrlWithId, getWeatherImgUrl } from "../API/apiUrl";
-import { setCache, getCache } from "../data/cacheData";
+import { getWeatherImgUrl, getWeatherWithCityCode } from "../API/ApiHelper.js";
+import { setCache } from "../data/cacheData";
+import backButton from "../assets/backButton.png";
+import { Link } from "react-router-dom";
+import { HOME_ROUTE } from "../data/constants.js";
 
 function WeatherInfo() {
   const { id } = useParams();
@@ -15,32 +18,20 @@ function WeatherInfo() {
   const [data, setData] = useState(); // creating a usestate variable to set cached data
 
   useEffect(() => {
-    // Check whether the data is cached or not
-    const data = getCache(id);
+    const fetchData = async () => {
+      try {
+        const APIdata = await getWeatherWithCityCode(id);
+        setData(APIdata);
+        setCache(id, APIdata);
+        console.log(APIdata);
+      } catch (error) {
+        // Handling the errors
+        console.error(error);
+      }
+    };
 
-    // Check whether the data is cached or not
-    if (data) {
-      // Use the cached data and svae it to state variable
-      setData(data);
-    } else {
-      // If there is no data or data is expired, fetch it from the API
-
-      axios
-        .get(getUrlWithId(id))
-        .then((response) => {
-          // Set API data to state variable
-          setData(response.data);
-
-          // Storing or Updating(if the cache with the corresponded key is expired) the cached data and the expiration time in the cache
-          setCache(id, response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    fetchData();
   }, [id]);
-
-  //console.log("second page data = " + data.name);
 
   return (
     <div className="secon-page">
@@ -48,9 +39,12 @@ function WeatherInfo() {
         <div className="cont-hght-10vw">
           <TitleBar></TitleBar>
         </div>
-        <div className="Spacer"></div>
+        <div className="spacer"></div>
         {data ? (
           <div className="full-page-weather">
+            <Link className="link-style" to={HOME_ROUTE}>
+              <img src={backButton} className="back-button"></img>
+            </Link>
             <div className="full-page-top">
               {data.main ? (
                 <h2>

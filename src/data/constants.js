@@ -35,3 +35,9 @@ export const FOOTER_INFORMATION = "2023 Dilshan Geethapriya";
 // PlaceHolders
 
 export const PH_CITY_SEARCH = "Enter a city name to see current weather";
+
+export const DEFAULT_INPUT_MESSAGE =
+  "Please enter a city name or country name before clicking the button.";
+
+export const ERROR_INPUT_MESSAGE =
+  "Please check if the city/country you entered is correct.";

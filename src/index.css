@@ -41,6 +41,7 @@ img{
 
 
 .second-page{
+  position: relative;
   max-width: 1280px;
   max-height: 720px;
 }
@@ -52,7 +53,7 @@ img{
   height: 10vw;
   left: 0;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
 }
 
 .page-footer{

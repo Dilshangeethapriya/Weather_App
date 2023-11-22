@@ -140,6 +140,8 @@
     color: white;
     transition: 0.1s linear;
   }
+
+  
   
   input:hover{
     transform:  scaleY(110%);
@@ -148,6 +150,7 @@
   ::placeholder{
     color: white;
   }
+
   
   .app button{
     flex: 1;
@@ -163,6 +166,11 @@
     transform: scaleX(105%) scaleY(105%);
   }
 
+  .input-message p{
+    font-size: 1.5rem;
+    color: crimson;
+    padding: 10px;
+  }
 
 
   @media (max-width:1024px){
@@ -175,6 +183,9 @@
       font-size: 1.05rem;
     }
 
+    .input-message p{
+      font-size: 1.05rem;
+    }
 
   }
   
@@ -200,6 +211,10 @@
         background: rgba(0,0,0,0.4);
         border: 1px rgba(0,0,0,0.1) solid;
         color: white;
+      }
+    
+      .input-message p{
+        font-size: 1rem;
       }
     
       input:hover {
@@ -334,12 +349,16 @@
     font-size: 0.8rem ;
   }
 
-  .app input {
+  .app input{
     font-size: 1rem;
   }
   
   .app button{
     font-size: 1rem;
+  }
+
+  .input-message p{
+    font-size: 0.9rem;
   }
 
 }
@@ -377,6 +396,10 @@
   }
   
   .app button{
+    font-size: 0.8rem;
+  }
+
+  .input-message p{
     font-size: 0.8rem;
   }
 
@@ -418,6 +441,10 @@
     font-size: 0.67rem;
   }
 
+  .input-message p{
+    font-size: 0.67rem;
+  }
+
 
 }
 
@@ -455,7 +482,9 @@
     font-size: 0.58rem;
   }
 
-
+  .input-message p{
+    font-size: 0.58rem;
+  }
 }
 
 
@@ -491,6 +520,10 @@
   }
   
   .app button{
+    font-size: 0.5rem;
+  }
+
+  .input-message p{
     font-size: 0.5rem;
   }
 
