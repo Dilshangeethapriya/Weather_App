@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { useState } from "react";
 import "../styles/currentWeather.css";
 import { dateTimeFormate, timeFormate } from "../utils/DateTimeFormat"; // created a file to format the date and time
