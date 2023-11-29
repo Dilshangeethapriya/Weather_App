@@ -19,14 +19,4 @@
 
 
 
-  @media (max-width:425px){
-
-    .back-button {
-        scale: 70%;
-        min-width: 20px;
-        top: 5%;
-        left: 3%;
-      }
-    
-  
-  }
+ 
