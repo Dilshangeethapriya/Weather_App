@@ -13,17 +13,12 @@ function getWeatherWithCityCode(id) {
     import.meta.env.VITE_REACT_API_KEY
   }&${API_WEATHER_UNITS}`;
 
-  return fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json(); // Convert response to JSON
-    })
-    .catch((error) => {
-      console.error("Error fetching weather data:", error);
-      throw error; // Rethrow the error to propagate it to the caller
-    });
+  return fetch(apiUrl).then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json(); // Convert response to JSON
+  });
 }
 
 function getWeatherWithCityName(cityName) {
@@ -31,17 +26,12 @@ function getWeatherWithCityName(cityName) {
     import.meta.env.VITE_REACT_API_KEY
   }&${API_WEATHER_UNITS}`;
 
-  return fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json(); // Convert response to JSON
-    })
-    .catch((error) => {
-      console.error("Error fetching weather data:", error);
-      throw error; // Rethrow the error to propagate it to the caller
-    });
+  return fetch(apiUrl).then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  });
 }
 
 export { getWeatherImgUrl, getWeatherWithCityCode, getWeatherWithCityName };
